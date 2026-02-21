@@ -1,0 +1,139 @@
+#!/usr/bin/env python3
+"""
+Generate a sale page HTML from a JSON array of image URLs.
+Usage: python generate-sale-page.py <template_json> <images_json> <output_html>
+"""
+
+import json
+import sys
+
+def generate_page(template_data, images):
+    """Generate complete HTML page with all images."""
+    
+    # Convert to thumbnail URLs for gallery display
+    thumbs = [url.replace('/1-1/', '/1-2/') for url in images]
+    
+    # Build images array for JS
+    js_images = ',\n      '.join(f'"{url}"' for url in thumbs)
+    
+    html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estate Sale: {template_data['address']}, {template_data['city']} | True Legacy Homes</title>
+  <meta name="description" content="Estate sale at {template_data['address']}, {template_data['city']}, CA {template_data['zip']}. {template_data['dates']}. {template_data['description']}">
+  <link rel="icon" href="/website/images/favicon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = {{ theme: {{ extend: {{ colors: {{ 'tlh-teal': '#38b5ad', 'tlh-teal-dark': '#2d9e96', 'tlh-dark': '#1e293b' }} }} }} }}</script>
+  <style>
+    .lightbox {{ display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 50; }}
+    .lightbox.active {{ display: flex; align-items: center; justify-content: center; }}
+    .lightbox img {{ max-height: 90vh; max-width: 90vw; object-fit: contain; }}
+    .lightbox-nav {{ position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; padding: 1rem; cursor: pointer; font-size: 2rem; border-radius: 0.5rem; }}
+    .lightbox-nav:hover {{ background: rgba(255,255,255,0.4); }}
+    .lightbox-close {{ position: absolute; top: 1rem; right: 1rem; color: white; font-size: 2rem; cursor: pointer; }}
+    .lightbox-counter {{ position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); color: white; }}
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-tlh-dark text-white py-4">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <a href="/website/"><img src="/website/images/tlhLOGO.png" alt="True Legacy Homes" class="h-12 brightness-200"></a>
+      <a href="/website/upcoming-sales/" class="text-sm bg-white/10 px-4 py-2 rounded-lg hover:bg-white/20">← All Sales</a>
+    </div>
+  </header>
+  <div class="relative h-72 md:h-96 overflow-hidden">
+    <img src="{thumbs[0]}" alt="Estate Sale in {template_data['city']}" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+      <div class="max-w-6xl mx-auto">
+        <span class="bg-{template_data['badge_color']} text-sm px-3 py-1 rounded-full font-semibold">{template_data['region']}</span>
+        <h1 class="text-3xl md:text-4xl font-bold mt-3">{template_data['address']}</h1>
+        <p class="text-xl text-gray-200">{template_data['city']}, CA {template_data['zip']}</p>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="md:col-span-2">
+        <div class="bg-white rounded-xl p-6 shadow-sm mb-6">
+          <h2 class="text-2xl font-bold mb-4">About This Sale</h2>
+          <p class="text-gray-700 mb-4">{template_data['description']}</p>
+          <p class="text-gray-700">{template_data['highlights']}</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h2 class="text-2xl font-bold mb-4">Photos <span class="text-gray-400 text-lg font-normal">({len(images)})</span></h2>
+          <div id="gallery" class="grid grid-cols-4 gap-2"></div>
+        </div>
+      </div>
+      <div class="md:col-span-1">
+        <div class="bg-white rounded-xl p-6 shadow-sm sticky top-4">
+          <h3 class="text-xl font-bold mb-4">Sale Details</h3>
+          <div class="space-y-4 text-sm">
+            <div class="flex items-start gap-3"><div class="w-10 h-10 bg-tlh-teal/10 rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-tlh-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></div><div><p class="font-semibold">Dates</p><p class="text-gray-600">{template_data['dates']}</p></div></div>
+            <div class="flex items-start gap-3"><div class="w-10 h-10 bg-tlh-teal/10 rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-tlh-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><div><p class="font-semibold">Hours</p><p class="text-gray-600">{template_data['hours']}</p></div></div>
+            <div class="flex items-start gap-3"><div class="w-10 h-10 bg-tlh-teal/10 rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-tlh-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div><div><p class="font-semibold">Address</p><p class="text-gray-600">{template_data['address']}<br>{template_data['city']}, CA {template_data['zip']}</p></div></div>
+            <div class="flex items-start gap-3"><div class="w-10 h-10 bg-tlh-teal/10 rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-tlh-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg></div><div><p class="font-semibold">Payment</p><p class="text-gray-600">Cash & Credit Cards</p></div></div>
+          </div>
+          <hr class="my-6">
+          <a href="https://maps.google.com/maps?q={template_data['address'].replace(' ', '+')},+{template_data['city']},+CA+{template_data['zip']}" target="_blank" class="block w-full bg-tlh-dark text-white text-center py-3 rounded-lg font-semibold hover:bg-gray-800 transition">Get Directions →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-close">&times;</span>
+    <span class="lightbox-nav" style="left:1rem" onclick="prevImage(event)">&#10094;</span>
+    <img id="lightbox-img" src="" alt="">
+    <span class="lightbox-nav" style="right:1rem" onclick="nextImage(event)">&#10095;</span>
+    <span class="lightbox-counter" id="lightbox-counter"></span>
+  </div>
+  <!-- Email Signup -->
+  <section class="py-8 bg-tlh-teal text-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-xl font-bold mb-2">Never Miss a Sale</h2>
+      <p class="opacity-90 mb-4">Get weekly updates on upcoming estate sales in your area.</p>
+      <form action="https://truelegacyhomes.us12.list-manage.com/subscribe/post?u=d000ea6786220cdf01bdde2cd&id=eb811b621b" method="post" target="_blank" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input type="email" name="EMAIL" placeholder="Enter your email" required class="flex-1 px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+        <button type="submit" class="bg-tlh-dark text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition whitespace-nowrap">Get Alerts</button>
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d000ea6786220cdf01bdde2cd_eb811b621b" tabindex="-1" value=""></div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-tlh-dark text-gray-400 py-6"><div class="max-w-6xl mx-auto px-4 text-center text-sm"><p>© 2026 True Legacy Homes. <a href="/website/" class="hover:text-white">Need an estate sale?</a></p></div></footer>
+  <script>
+    const images = [
+      {js_images}
+    ];
+    let currentIndex = 0;
+    const gallery = document.getElementById('gallery');
+    images.forEach((url, i) => {{ const img = document.createElement('img'); img.src = url; img.className = 'w-full h-24 md:h-28 object-cover rounded-lg cursor-pointer hover:opacity-80 transition'; img.loading = 'lazy'; img.onclick = () => openLightbox(i + 1); gallery.appendChild(img); }});
+    function openLightbox(index) {{ currentIndex = index; document.getElementById('lightbox-img').src = images[index - 1]; document.getElementById('lightbox-counter').textContent = index + ' / ' + images.length; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }}
+    function closeLightbox(e) {{ if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {{ document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }} }}
+    function prevImage(e) {{ e.stopPropagation(); currentIndex = currentIndex > 1 ? currentIndex - 1 : images.length; openLightbox(currentIndex); }}
+    function nextImage(e) {{ e.stopPropagation(); currentIndex = currentIndex < images.length ? currentIndex + 1 : 1; openLightbox(currentIndex); }}
+    document.addEventListener('keydown', (e) => {{ if (!document.getElementById('lightbox').classList.contains('active')) return; if (e.key === 'Escape') closeLightbox({{target: {{id: 'lightbox'}}}}); if (e.key === 'ArrowLeft') prevImage({{stopPropagation: () => {{}}}}); if (e.key === 'ArrowRight') nextImage({{stopPropagation: () => {{}}}}); }});
+  </script>
+</body>
+</html>'''
+    
+    return html
+
+if __name__ == '__main__':
+    if len(sys.argv) != 4:
+        print("Usage: python generate-sale-page.py <template_json> <images_json> <output_html>")
+        sys.exit(1)
+    
+    with open(sys.argv[1]) as f:
+        template_data = json.load(f)
+    with open(sys.argv[2]) as f:
+        images = json.load(f)
+    
+    html = generate_page(template_data, images)
+    
+    with open(sys.argv[3], 'w') as f:
+        f.write(html)
+    
+    print(f"Generated {sys.argv[3]} with {len(images)} images")
