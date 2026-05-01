@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stronghold Project Estimate</title>
+    <title>Stronghold Project Estimate - Monte Carlo Agent-Ready Workflow</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
@@ -12,26 +12,20 @@
             <!-- Header -->
             <div class="bg-white rounded-lg shadow-sm p-8 mb-6">
                 <h1 class="text-3xl font-bold text-gray-900 mb-2">Stronghold Project</h1>
-                <p class="text-gray-600">Development Estimate & Timeline</p>
+                <p class="text-gray-600">Agent-Ready Implementation Roadmap</p>
                 <p class="text-sm text-gray-500 mt-2">Last updated: May 1, 2026</p>
             </div>
 
             <!-- Overview -->
             <div class="bg-white rounded-lg shadow-sm p-8 mb-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">Project Overview</h2>
-                <p class="text-gray-700">Complete implementation of the Stronghold platform including frontend interface, backend API, and database infrastructure.</p>
+                <p class="text-gray-700">Transform the Stronghold platform into a fully agent-ready system implementing modern AI accessibility standards including MCP, OAuth discovery, Agent Skills, content negotiation, and agentic commerce protocols.</p>
             </div>
 
             <!-- Timeline Summary -->
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-blue-50 rounded-lg p-6">
-                    <div class="text-blue-600 text-sm font-semibold mb-1">Total Development Time</div>
-                    <div class="text-3xl font-bold text-blue-900">10.5 hours</div>
-                </div>
-                <div class="bg-green-50 rounded-lg p-6">
-                    <div class="text-green-600 text-sm font-semibold mb-1">Estimated Completion</div>
-                    <div class="text-3xl font-bold text-green-900">2 business days</div>
-                </div>
+            <div class="bg-blue-50 rounded-lg p-6 mb-6">
+                <div class="text-blue-600 text-sm font-semibold mb-1">Total Development Time</div>
+                <div class="text-3xl font-bold text-blue-900">10.5 hours</div>
             </div>
 
             <!-- Impact Summary -->
@@ -40,48 +34,72 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     <div>
                         <div class="text-sm text-gray-600 mb-1">Current State</div>
-                        <div class="text-2xl font-bold text-red-600">Manual workflows</div>
-                        <div class="text-sm text-gray-700 mt-2">Disconnected systems, repetitive tasks, human error prone</div>
+                        <div class="text-2xl font-bold text-red-600">0/100 points</div>
+                        <div class="text-sm text-gray-700 mt-2">No agent-ready features, manual workflows, disconnected systems</div>
                     </div>
                     <div>
                         <div class="text-sm text-gray-600 mb-1">After Implementation</div>
-                        <div class="text-2xl font-bold text-green-600">Automated platform</div>
-                        <div class="text-sm text-gray-700 mt-2">Integrated workflows, AI-ready infrastructure, scalable architecture</div>
+                        <div class="text-2xl font-bold text-green-600">100/100 points</div>
+                        <div class="text-sm text-gray-700 mt-2">Full MCP + OAuth + Skills + Commerce stack, automated platform</div>
                     </div>
                     <div>
-                        <div class="text-sm text-gray-600 mb-1">Efficiency Gain</div>
-                        <div class="text-2xl font-bold text-blue-600">+65% score</div>
-                        <div class="text-sm text-gray-700 mt-2">From baseline to agent-ready state with full automation</div>
+                        <div class="text-sm text-gray-600 mb-1">Agent Readiness Score</div>
+                        <div class="text-2xl font-bold text-blue-600">0% → 100%</div>
+                        <div class="text-sm text-gray-700 mt-2">From baseline to full agent-ready state per isitagentready.com</div>
                     </div>
                 </div>
             </div>
 
             <!-- Phase Breakdown -->
             <div class="bg-white rounded-lg shadow-sm p-8 mb-6">
-                <h2 class="text-xl font-semibold text-gray-900 mb-6">Task Breakdown</h2>
+                <h2 class="text-xl font-semibold text-gray-900 mb-6">Implementation Phases</h2>
                 
                 <!-- Phase 1 -->
                 <div class="mb-6 pb-6 border-b border-gray-200">
                     <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-lg font-semibold text-gray-900">Phase 1: Core Infrastructure</h3>
+                        <h3 class="text-lg font-semibold text-gray-900">Phase 1: Discoverability & Bot Access Control</h3>
                         <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">2 hours</span>
                     </div>
-                    <ul class="space-y-2 text-gray-700">
+                    <div class="mb-4">
+                        <div class="grid grid-cols-2 gap-4 mb-3">
+                            <div class="bg-red-50 rounded p-3">
+                                <div class="text-xs text-red-600 font-semibold mb-1">Current Score</div>
+                                <div class="text-2xl font-bold text-red-700">0/40</div>
+                            </div>
+                            <div class="bg-green-50 rounded p-3">
+                                <div class="text-xs text-green-600 font-semibold mb-1">Target Score</div>
+                                <div class="text-2xl font-bold text-green-700">40/40</div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Database schema design and setup</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>robots.txt with AI bot rules</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: Missing or incomplete. Will add: GPTBot, ClaudeBot, PerplexityBot allow/disallow rules + crawl-delay directives</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>API endpoint architecture</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>XML Sitemap</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: No sitemap reference. Will add: Auto-generated sitemap with all public pages, proper lastmod timestamps</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Authentication and authorization framework</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>Link Headers</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: No discovery headers. Will add: Link rel=alternate, rel=sitemap, and canonical headers on all responses</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Environment configuration</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>Content Signals</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: No metadata. Will add: X-Content-Signals headers indicating data freshness, update frequency, content type</div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -89,25 +107,49 @@
                 <!-- Phase 2 -->
                 <div class="mb-6 pb-6 border-b border-gray-200">
                     <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-lg font-semibold text-gray-900">Phase 2: Frontend Development</h3>
+                        <h3 class="text-lg font-semibold text-gray-900">Phase 2: Content Accessibility</h3>
                         <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">4 hours</span>
                     </div>
-                    <ul class="space-y-2 text-gray-700">
+                    <div class="mb-4">
+                        <div class="grid grid-cols-2 gap-4 mb-3">
+                            <div class="bg-red-50 rounded p-3">
+                                <div class="text-xs text-red-600 font-semibold mb-1">Current Score</div>
+                                <div class="text-2xl font-bold text-red-700">0/20</div>
+                            </div>
+                            <div class="bg-green-50 rounded p-3">
+                                <div class="text-xs text-green-600 font-semibold mb-1">Target Score</div>
+                                <div class="text-2xl font-bold text-green-700">20/20</div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>User interface design and layout</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>Markdown Content Negotiation</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: HTML only. Will add: Accept: text/markdown support on all content endpoints, automatic HTML-to-Markdown conversion middleware</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Component development</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>Structured Data</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: No schema markup. Will add: JSON-LD with Organization, WebSite, BreadcrumbList schemas on every page</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>State management implementation</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>Clean Semantic HTML</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: Potentially cluttered markup. Will refactor: Use semantic tags (article, section, nav), strip unnecessary divs, improve heading hierarchy</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Responsive design and mobile optimization</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>Accessible Navigation</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: Unknown ARIA support. Will ensure: Proper ARIA labels, keyboard navigation, focus management for agent traversal</div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -115,25 +157,49 @@
                 <!-- Phase 3 -->
                 <div class="mb-6 pb-6 border-b border-gray-200">
                     <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-lg font-semibold text-gray-900">Phase 3: Backend Integration</h3>
+                        <h3 class="text-lg font-semibold text-gray-900">Phase 3: Protocol Discovery (MCP, OAuth, Agent Skills)</h3>
                         <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">3 hours</span>
                     </div>
-                    <ul class="space-y-2 text-gray-700">
+                    <div class="mb-4">
+                        <div class="grid grid-cols-2 gap-4 mb-3">
+                            <div class="bg-red-50 rounded p-3">
+                                <div class="text-xs text-red-600 font-semibold mb-1">Current Score</div>
+                                <div class="text-2xl font-bold text-red-700">0/30</div>
+                            </div>
+                            <div class="bg-green-50 rounded p-3">
+                                <div class="text-xs text-green-600 font-semibold mb-1">Target Score</div>
+                                <div class="text-2xl font-bold text-green-700">30/30</div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>API endpoint implementation</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>MCP Server Card</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: No MCP endpoint. Will create: /.well-known/mcp-server.json with server metadata, capabilities, supported tools/prompts</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Database query optimization</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>Agent Skills Manifest</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: No skill definitions. Will add: SKILL.md files defining agent-executable workflows, input/output schemas, and usage examples</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Data validation and error handling</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>OAuth Discovery</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: No OAuth metadata. Will implement: /.well-known/oauth-authorization-server endpoint with token URLs, scopes, grant types</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Integration with frontend components</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>API Catalog</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: Undocumented APIs. Will publish: OpenAPI 3.1 spec at /api-catalog.json with all endpoints, request/response schemas, authentication requirements</div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -141,25 +207,49 @@
                 <!-- Phase 4 -->
                 <div>
                     <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-lg font-semibold text-gray-900">Phase 4: Security & Deployment</h3>
+                        <h3 class="text-lg font-semibold text-gray-900">Phase 4: Commerce & Web Bot Auth</h3>
                         <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">1.5 hours</span>
                     </div>
-                    <ul class="space-y-2 text-gray-700">
+                    <div class="mb-4">
+                        <div class="grid grid-cols-2 gap-4 mb-3">
+                            <div class="bg-red-50 rounded p-3">
+                                <div class="text-xs text-red-600 font-semibold mb-1">Current Score</div>
+                                <div class="text-2xl font-bold text-red-700">0/10</div>
+                            </div>
+                            <div class="bg-green-50 rounded p-3">
+                                <div class="text-xs text-green-600 font-semibold mb-1">Target Score</div>
+                                <div class="text-2xl font-bold text-green-700">10/10</div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Security audit and hardening</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>Web Bot Auth</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: No bot authentication. Will implement: /.well-known/web-bot-auth endpoint with VAPID keys for verified bot access</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Production environment setup</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>x402 Payment Headers</strong>
+                                <div class="text-sm text-gray-600 mt-1">Currently: No payment metadata. Will add: HTTP 402 responses with x402 payment required headers on premium content endpoints</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Deployment pipeline configuration</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>Testing & Validation</strong>
+                                <div class="text-sm text-gray-600 mt-1">Run isitagentready.com scan, verify all endpoints return correct headers, test Markdown negotiation with curl</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">•</span>
-                            <span>Documentation and handoff</span>
+                            <span class="text-blue-500 mr-2 font-bold">•</span>
+                            <div>
+                                <strong>Documentation</strong>
+                                <div class="text-sm text-gray-600 mt-1">Create README with agent integration examples, update API docs with new endpoints, publish changelog</div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -173,25 +263,37 @@
                         <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        <span class="text-gray-700">Fully functional web application</span>
+                        <span class="text-gray-700">100/100 agent-ready score (isitagentready.com)</span>
                     </div>
                     <div class="flex items-start">
                         <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        <span class="text-gray-700">Complete API documentation</span>
+                        <span class="text-gray-700">Full MCP server implementation</span>
                     </div>
                     <div class="flex items-start">
                         <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        <span class="text-gray-700">Deployment guide</span>
+                        <span class="text-gray-700">Agent Skills manifest with executable workflows</span>
                     </div>
                     <div class="flex items-start">
                         <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        <span class="text-gray-700">Source code with comments</span>
+                        <span class="text-gray-700">OAuth + API catalog + OpenAPI 3.1 spec</span>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Markdown content negotiation on all endpoints</span>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Complete implementation documentation</span>
                     </div>
                 </div>
             </div>
